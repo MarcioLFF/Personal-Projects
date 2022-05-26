@@ -60,13 +60,14 @@ const saveStorage = () => {
 function cartItemClickListener(event) {
   const ol = document.querySelector(olClass);
   ol.removeChild(event.target);
+  
   saveStorage();
 }
 
 const loadStorage = () => {
   const ol = document.querySelector(olClass);
   ol.innerHTML = localStorage.getItem('saveCart');
-  // ol.addEventListener('click', cartItemClickListener);
+  ol.addEventListener('click', cartItemClickListener);
   saveStorage();
 };
 
@@ -95,7 +96,7 @@ const buttonClick = () => {
   cartButton.forEach((button) => {
   button.addEventListener('click', (event) => {
     const getId = getSkuFromProductItem(event.target.parentElement);
-    console.log(event.target);
+    // console.log(event.target);
     fetchCart(getId);
   });  
 });
